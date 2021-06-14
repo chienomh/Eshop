@@ -45,7 +45,6 @@ export default {
 
 <style scoped>
     #header {
-        width: calc(100% - 150px);
         height: 52px;
         display: flex;
         position: relative;
@@ -80,6 +79,7 @@ export default {
         display: flex;
         align-items: center;
         height: 100%;
+        cursor: pointer;
     }
 
     .account img {
@@ -102,6 +102,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     .icon_dien_thoai {

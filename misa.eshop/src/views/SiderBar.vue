@@ -22,35 +22,26 @@
 export default {
   data() {
     return {
-      isFocus: false,
+      
     };
   },
 
-  // Create Directives Custom
-  directives: {
-    focus: {
-      inserted: function (el) {
-        el.focus()
-      } 
-    }
-  },
+  //   //  Auto focus in "Tổng Quan" when page load
+  //   mounted() {
+  //     this.focusDiv();
+  //   },
 
-    //  Auto focus in "Tổng Quan" when page load
-    mounted() {
-      this.focusDiv();
-    },
+  // methods: {
+  //   selectItem() {
+  //     this.isFocus = true;
+  //   },
 
-  methods: {
-    selectItem() {
-      this.isFocus = true;
-    },
-
-    // Function focus
-    focusDiv() {
-      this.$refs.tongQuan.focus();
-      this.isFocus = true;
-    }
-  }
+  //   // Function focus
+  //   focusDiv() {
+  //     this.$refs.tongQuan.focus();
+  //     this.isFocus = true;
+  //   }
+  // }
 }
 </script>
 
@@ -65,7 +56,7 @@ export default {
         padding: 0px;
         width: 150px;
         height: 100%;
-        background-color: #0088c1;
+        background-color: #026b97;
         box-sizing: border-box;
     }
 
