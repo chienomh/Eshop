@@ -12,11 +12,11 @@
                 <table>
                     <thead>
                         <tr class="field_main">
-                            <th style="min-width:130px; width:160px">Mã của hàng</th>
-                            <th style="min-width:250px; width:200px">Tên cửa hàng</th>
-                            <th style="min-width:600px; width:600px" >Địa chỉ</th>
-                            <th style="min-width:130px; width:130px">Số điện thoại</th>
-                            <th style="min-width:150px; width:150px">Trạng thái</th>
+                            <th style="min-width:50px; width:160px">Mã của hàng</th>
+                            <th style="min-width:70px; width:249px">Tên cửa hàng</th>
+                            <th style="min-width:100px;" >Địa chỉ</th>
+                            <th style="min-width:60px; width:130px">Số điện thoại</th>
+                            <th style="min-width:70px; width:150px">Trạng thái</th>
                         </tr>
                         <tr>
                             <th><div class="container"><span>*</span><input type="text"></div></th>
@@ -189,6 +189,10 @@ export default {
     }
 
     /* table */
+    .table_view {
+        width: 100%;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;

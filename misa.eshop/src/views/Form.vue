@@ -24,7 +24,7 @@
                     </div>
                     <input type="text" id="shop-address">
                 </div>
-                <div class="phone-number style-margin">
+                <div class="phone-number style-margin" style="margin-right: 20px">
                      <div class="style-input">
                         <span class="label">Số điện thoại</span>
                     </div>
@@ -35,6 +35,41 @@
                         <span class="label">Mã số thuế</span>
                     </div>
                     <input type="text" id="tax-code" class="style-input-small">
+                </div>
+                <div class="mation style-margin" style="float: none;"> 
+                     <div class="style-input">
+                        <span class="label">Quốc gia</span>
+                    </div>
+                    <select name="nation" id="nation"  class="style-input-small">
+                        <option value="1">Việt Nam</option>
+                    </select>
+                </div>
+                <div class="thanh-pho style-margin" style="margin-right: 20px">
+                     <div class="style-input">
+                        <span class="label">Tỉnh/Thành phố</span>
+                    </div>
+                    <select name="nation" id="nation"  class="style-input-small"> 
+                    </select>
+                </div>
+                <div class="huyen style-margin">
+                     <div class="style-input">
+                        <span class="label">Quận/Huyện</span>
+                    </div>
+                    <select name="nation" id="nation"  class="style-input-small"> 
+                    </select>
+                </div>
+                <div class="xa style-margin" style="margin-right: 20px">
+                     <div class="style-input">
+                        <span class="label">Phường/Xã</span>
+                    </div>
+                    <select name="nation" id="nation"  class="style-input-small"> 
+                    </select>
+                </div>
+                <div class="pho style-margin">
+                     <div class="style-input">
+                        <span class="label">Đường phố</span>
+                    </div>
+                    <input type="text" class="style-input-small"> 
                 </div>
             </div>
         </div>
@@ -87,7 +122,7 @@ export default {
         width: 100%;
         height: 365px;
         border-bottom: 1px solid #f0f0f0;
-        padding: 16px 16px 0;
+        padding: 20px 16px 0;
         font-weight: 200px;
     }
 
@@ -104,6 +139,7 @@ export default {
 
     .style-margin {
         margin-bottom: 8px;
+        float: left;
     }
 
     .required {
@@ -111,12 +147,13 @@ export default {
     }
 
     #shop-code,#shop-name{
-        width: 430px;
+        width: 460px;
         height: 32px;
     }
 
     #shop-address{
-        width: 430px;
+        width: 460px;
         height: 80px;
     }
+
 </style>
