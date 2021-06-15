@@ -4,12 +4,13 @@
         <SiderBar/>
         <div class="right">
           <Header/>
-          <StoreCatalog/>
+          <StoreCatalog @showFormNow="isShowForm"/>
         </div>
      </div>
-     <div class="form_detail">
-      <Form/>
+     <div class="form_detail" v-if="isHidden">
+        <Form @closeFormNow="isCloseForm"/>
      </div>
+    <FormDelete class="form_delete"/>
   </div>
 </template>
 
@@ -18,13 +19,32 @@ import SiderBar from '../src/views/SiderBar.vue'
 import Header from '../src/views/Header.vue'
 import StoreCatalog from '../src/views/StoreCatalog.vue'
 import Form from '../src/views/Form.vue'
+import FormDelete from '../src/views/FormDelete.vue'
 
 export default {
   components: {
     SiderBar,
     Header,
     StoreCatalog,
-    Form
+    Form,
+    FormDelete,
+  },
+
+  data() {
+    return {
+      isHidden : false
+    }
+  },
+
+  methods: {
+
+    // sự kiện đóng mở form
+    isShowForm() {
+      this.isHidden = true;
+    },
+    isCloseForm(){
+      this.isHidden = false
+    }
   }
 }
 </script>
@@ -58,9 +78,16 @@ export default {
   flex: 1;
 }
 
-.form_detail  {
+.form_detail {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.form_delete {
+  position: absolute;
+  z-index: 3;
   width: 100%;
   height: 100%;
 }

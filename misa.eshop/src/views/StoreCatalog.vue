@@ -1,8 +1,9 @@
 <template>
     <div class="main-store">
+        <!-- <FormDelete class="formDelete"/> -->
         <div class="grid_table">
             <div class="action">
-                <div class="add style_action">Thêm mới</div>
+                <div class="add style_action" @click="openForm">Thêm mới</div>
                 <div class="replica style_action">Nhân bản</div>
                 <div class="edit style_action">Sửa</div>
                 <div class="delete style_action">Xóa</div>
@@ -15,7 +16,7 @@
                             <th style="min-width:50px; width:160px">Mã của hàng</th>
                             <th style="min-width:70px; width:249px">Tên cửa hàng</th>
                             <th style="min-width:100px;" >Địa chỉ</th>
-                            <th style="min-width:60px; width:130px">Số điện thoại</th>
+                            <th style="min-width:60px; width:150px">Số điện thoại</th>
                             <th style="min-width:70px; width:150px">Trạng thái</th>
                         </tr>
                         <tr>
@@ -69,6 +70,196 @@
                             <td class="style_content">0123456789</td>
                             <td class="style_content">Đang hoạt động</td>
                         </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+                        <tr>
+                            <td class="style_content">1</td>
+                            <td class="style_content">Circle K</td>
+                            <td class="style_content">162 Mai Dịch, Hà Nội</td>
+                            <td class="style_content">0123456789</td>
+                            <td class="style_content">Đang hoạt động</td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -108,18 +299,40 @@
 </template>
 
 <script>
+
+// import FormDelete from "../views/FormDelete.vue"
+
 export default {
-    
+
+    components: {
+        // FormDelete,
+    },
+
+    methods: {
+
+        // Nhờ cha mở form
+        openForm(){
+            this.$emit("showFormNow")
+        }
+    }
 }
 </script>
 
 <style scoped>
+
+    .formDelete {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+    }
+
     .main-store {
         height: calc(100vh - 52px);
         background-color: #e5e6eb;
         padding: 9px;
         box-sizing: border-box;
-        
+        position: relative;
     }
 
     .grid_table {
@@ -127,6 +340,7 @@ export default {
         height: 100%;
         background-color: #FFFFFF;
         width: 100%;
+        z-index: 2;
     }
 
     .grid_table .action {
@@ -191,19 +405,21 @@ export default {
     /* table */
     .table_view {
         width: 100%;
+        max-height: calc(100vh - 160px);
+        overflow: scroll;
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
-        overflow: hidden;
+        overflow: scroll;
         cursor: pointer;
     }
 
     table th,td {
         height: 32px;
         border: 1px solid #d0d0d0;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 
     table tbody tr:hover {
@@ -217,6 +433,12 @@ export default {
     table thead tr:nth-child(odd) {
         background-color: #f0f0f0;
     }
+
+    table thead{
+        position: sticky;
+        top: 0;
+    }
+
 
     table tbody tr:nth-child(odd) {
         background-color: #FFFFFF;
