@@ -4,13 +4,18 @@
         <SiderBar/>
         <div class="right">
           <Header/>
-          <StoreCatalog @showFormNow="isShowForm"/>
+          <StoreCatalog @showFormNow="isShowForm"
+          @openAlertNow="isShowAlert"
+          />
         </div>
      </div>
      <div class="form_detail" v-if="isHidden">
         <Form @closeFormNow="isCloseForm"/>
      </div>
-    <FormDelete class="form_delete"/>
+    <FormDelete class="form_delete" 
+      @closeAlertNow="isShowAlert" 
+      v-if="isAlert"
+    />
   </div>
 </template>
 
@@ -32,7 +37,8 @@ export default {
 
   data() {
     return {
-      isHidden : false
+      isHidden : false,
+      isAlert : false
     }
   },
 
@@ -44,7 +50,12 @@ export default {
     },
     isCloseForm(){
       this.isHidden = false
-    }
+    },
+
+    // Sự kiện đóng/mở alert
+    isShowAlert() {
+      this.isAlert = !this.isAlert
+    },
   }
 }
 </script>

@@ -3,6 +3,9 @@
     <div class="form-alert">
         <div class="title-alert">
             <span>Xóa dữ liệu</span>
+            <span class="button-close">
+                <img src="../assets/icon/cancel-gray.png" alt="" @click="closeAlert">
+            </span>
         </div>
         <div class="main-title-alert">
             <div class="title-main-alert">
@@ -14,7 +17,7 @@
         <div class="active-alert">
             <div class="select-alert">
                 <button class="confirm">Xóa</button>
-                <button class="no">Hủy bỏ</button>
+                <button class="no" @click="closeAlert">Hủy bỏ</button>
             </div>
         </div>
     </div>
@@ -24,7 +27,9 @@
 <script>
 export default {
     methods: {
-        
+        closeAlert() {
+            this.$emit("closeAlertNow")
+        }
     }
 };
 </script>
@@ -49,11 +54,8 @@ export default {
     border-radius: 4px;
     height: 40px;
     padding: 10px 17px;
-    background-image: url("../assets/icon/cancel-gray.png");
-    background-repeat: no-repeat;
-    background-size: 15px;
-    background-position: 96% 50%;
     border-bottom: #d0d0d0;
+    position: relative;
 }
 
 .title-alert span {
@@ -68,6 +70,16 @@ export default {
     background-repeat: no-repeat;
     background-position: 5% 50%;
     border: 1px solid #d0d0d0;
+}
+
+.button-close{
+    position: absolute;
+    right: 10px;
+    top: 13px
+}
+
+.button-close img {
+    width: 16px;
 }
 
 .active-alert {
@@ -97,7 +109,7 @@ export default {
 }
 
 .no {
-    width: 75px;
+    width: 90px;
     height: 32px;
     outline: none;
     border: none;
@@ -110,6 +122,7 @@ export default {
     font-weight: 700;
     background-color: #FFFFFF;
     cursor: pointer;
+    margin-left: 5px;
 
 }
 

@@ -12,7 +12,11 @@
               >Mã cửa hàng <span class="required"> *</span></span
             >
           </div>
-          <input type="text" id="shop-code" class="style-boder" v-focus />
+          <input type="text" id="shop-code" 
+            class="style-boder" 
+            ref="focusInput"
+            @blur="validateCode" 
+            :class="{inputValidate : isValidateCode}"/>
         </div>
         <div class="shop-name style-margin">
           <div class="style-input">
@@ -20,7 +24,10 @@
               >Tên cửa hàng <span class="required"> *</span></span
             >
           </div>
-          <input type="text" id="shop-name" class="style-boder" />
+          <input type="text" id="shop-name" 
+            class="style-boder" 
+            @blur="validateName" 
+            :class="{inputValidate : isValidateName}"/>
         </div>
         <div class="shop-address style-margin">
           <div class="style-input">
@@ -31,6 +38,8 @@
             id="shop-address"
             class="style-boder"
             style="resize: none"
+            @blur="validateAddress" 
+            :class="{inputValidate : isValidateAddress}"
           ></textarea>
         </div>
         <div class="phone-number style-margin" style="margin-right: 20px">
@@ -129,17 +138,48 @@ export default {
     },
   },
 
+  mounted() {
+    this.focusInput();
+  },
+
   methods: {
 
-    // Nhờ cha đóng fomr
+    // Nhờ cha đóng form
     closeForm() {
         this.$emit("closeFormNow")
     },
+
+    // Hàm focus vào mã cửa hàng
+    focusInput() {
+      this.$refs.focusInput.focus();
+    },
+
+    // validate form
+    validateCode(e) {
+      if (!e.target.value.length)
+        this.isValidateCode = true;
+      else this.isValidateCode = false
+    },
+
+    validateName(e) {
+      if (!e.target.value.length)
+        this.isValidateName = true;
+      else this.isValidateName = false
+    },
+
+    validateAddress(e) {
+      if (!e.target.value.length)
+        this.isValidateAddress = true;
+      else this.isValidateAddress = false
+    }
   },
 
   data() {
     return {
-     
+      isValidate: false,
+      isValidateCode: false,
+      isValidateName : false,
+      isValidateAddress :false,
     };
   },
 };
@@ -190,7 +230,6 @@ export default {
   padding: 20px 16px 0;
   font-weight: 200px;
 }
-
 .style-input {
   width: 105px;
   float: left;
@@ -223,6 +262,8 @@ textarea:focus {
 
 .style-boder {
   border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding-left: 10px;
 }
 
 .required {
@@ -323,5 +364,13 @@ textarea:focus {
 .footer-active .huy_bo:hover {
   border: 1px solid #026b98;
   border-radius: 3px;
+}
+
+.inputValidate{
+  border: 1px solid #cf4c35;
+  background-image: url("../assets/icon/exclamation.png");
+  background-repeat: no-repeat;
+  background-size: 14px;
+  background-position: 98% 50%;
 }
 </style>
