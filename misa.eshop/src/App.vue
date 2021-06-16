@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-     <div class="main">
+     <!-- <div class="main">
         <SiderBar/>
         <div class="right">
           <Header/>
@@ -15,24 +15,28 @@
     <FormDelete class="form_delete" 
       @closeAlertNow="isShowAlert" 
       v-if="isAlert"
-    />
+    /> -->
+    <Autocomplete/>
   </div>
 </template>
 
 <script>
-import SiderBar from '../src/views/SiderBar.vue'
-import Header from '../src/views/Header.vue'
-import StoreCatalog from '../src/views/StoreCatalog.vue'
-import Form from '../src/views/Form.vue'
-import FormDelete from '../src/views/FormDelete.vue'
+// import SiderBar from '../src/views/SiderBar.vue'
+// import Header from '../src/views/Header.vue'
+// import StoreCatalog from '../src/views/StoreCatalog.vue'
+// import Form from '../src/views/Form.vue'
+// import FormDelete from '../src/views/FormDelete.vue'
+import Autocomplete from '../src/views/autocomplete.vue'
+
 
 export default {
   components: {
-    SiderBar,
-    Header,
-    StoreCatalog,
-    Form,
-    FormDelete,
+    // SiderBar,
+    // Header,
+    // StoreCatalog,
+    // Form,
+    // FormDelete,
+    Autocomplete
   },
 
   data() {
