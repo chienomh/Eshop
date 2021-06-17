@@ -3,7 +3,7 @@
         <!-- <FormDelete class="formDelete"/> -->
         <div class="grid_table">
             <div class="action">
-                <div class="add style_action" @click="openForm" v-on:keyup.enter="test">Thêm mới</div>
+                <div class="add style_action" @click="openForm" >Thêm mới</div>
                 <div class="replica style_action" @click="openForm">Nhân bản</div>
                 <div class="edit style_action" @click="openForm">Sửa</div>
                 <div class="delete style_action" @click="openAlert">Xóa</div>
@@ -124,8 +124,6 @@
 </template>
 
 <script>
-
-// import FormDelete from "../views/FormDelete.vue"
 
 export default {
 

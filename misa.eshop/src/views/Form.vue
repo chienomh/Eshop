@@ -1,10 +1,11 @@
 <template>
-  <div class="main-form">
+  <div class="main-form" @keyup.esc="closeForm">
     <div class="form">
       <div class="form-title">
         <span class="title">Thêm mới cửa hàng</span>
         <span class="close-form" @click="closeForm">x</span>
       </div>
+      <div tabindex="1" id="first"></div>
       <div class="content-form">
         <div class="shop-code style-margin">
           <div class="style-input">
@@ -12,11 +13,20 @@
               >Mã cửa hàng <span class="required"> *</span></span
             >
           </div>
-          <input type="text" id="shop-code" 
-            class="style-boder" 
-            ref="focusInput"
-            @blur="validateCode" 
-            :class="{inputValidate : isValidateCode}"/>
+          <div class="code-shop">
+            <input
+              type="text"
+              id="shop-code"
+              class="style-boder"
+              ref="focusInput"
+              @blur="validateCode"
+              :class="{ inputValidate: isValidateCode }"
+            />
+            <span class="tooltipCode"
+              >Đây là mã cửa hàng bạn dùng để giúp bạn không bị trùng với các
+              của hàng khác</span
+            >
+          </div>
         </div>
         <div class="shop-name style-margin">
           <div class="style-input">
@@ -24,23 +34,36 @@
               >Tên cửa hàng <span class="required"> *</span></span
             >
           </div>
-          <input type="text" id="shop-name" 
-            class="style-boder" 
-            @blur="validateName" 
-            :class="{inputValidate : isValidateName}"/>
+          <div class="name-shop">
+            <input
+              type="text"
+              id="shop-name"
+              class="style-boder"
+              @blur="validateName"
+              :class="{ inputValidate: isValidateName }"
+            />
+            <span class="tooltipName"
+              >Đây là tên của cửa hàng giúp quản quản lý của hàng</span
+            >
+          </div>
         </div>
         <div class="shop-address style-margin">
           <div class="style-input">
             <span class="label">Địa chỉ <span class="required"> *</span></span>
           </div>
-          <textarea
-            type="text"
-            id="shop-address"
-            class="style-boder"
-            style="resize: none"
-            @blur="validateAddress" 
-            :class="{inputValidate : isValidateAddress}"
-          ></textarea>
+          <div class="address-shop">
+            <textarea
+              type="text"
+              id="shop-address"
+              class="style-boder"
+              style="resize: none"
+              @blur="validateAddress"
+              :class="{ inputValidate: isValidateAddress }"
+            ></textarea>
+            <span class="tooltipAddress"
+              >Đây là địa chỉ cửa cửa hàng</span
+            >
+          </div>
         </div>
         <div class="phone-number style-margin" style="margin-right: 20px">
           <div class="style-input">
@@ -50,6 +73,7 @@
             type="text"
             id="phone-number"
             class="style-input-small style-boder"
+            style="width: 167px"
           />
         </div>
         <div class="tax-code style-margin">
@@ -60,56 +84,44 @@
             type="text"
             id="tax-code"
             class="style-input-small style-boder"
+            style="width: 167px"
           />
         </div>
-        <div class="mation style-margin" style="float: none">
+        <div class="nation style-margin">
           <div class="style-input">
             <span class="label">Quốc gia</span>
           </div>
-          <select
-            name="nation"
-            id="nation"
-            class="style-input-small style-boder"
-          >
-            <option value="0"></option>
-            <option value="1">Việt Nam</option>
-          </select>
+          <Autocomplete :data="customers" />
         </div>
-        <div class="thanh-pho style-margin" style="margin-right: 20px">
+
+        <div class="thanh-pho style-margin" style="float: left">
           <div class="style-input">
             <span class="label">Tỉnh/Thành phố</span>
           </div>
-          <select
-            name="nation"
-            id="nation"
-            class="style-input-small style-boder"
-          ></select>
+          <Autocomplete :data="customers" />
         </div>
-        <div class="huyen style-margin">
+
+        <div class="huyen style-margin" style="margin-left: 290px">
           <div class="style-input">
             <span class="label">Quận/Huyện</span>
           </div>
-          <select
-            name="nation"
-            id="nation"
-            class="style-input-small style-boder"
-          ></select>
+          <Autocomplete :data="customers" />
         </div>
-        <div class="xa style-margin" style="margin-right: 20px">
+        <div class="xa style-margin" style="float: left">
           <div class="style-input">
             <span class="label">Phường/Xã</span>
           </div>
-          <select
-            name="nation"
-            id="nation"
-            class="style-input-small style-boder"
-          ></select>
+          <Autocomplete :data="customers"/>
         </div>
-        <div class="pho style-margin">
+        <div class="pho style-margin" style="margin-left: 290px">
           <div class="style-input">
             <span class="label">Đường phố</span>
           </div>
-          <input type="text" class="style-input-small style-boder" />
+          <input
+            type="text"
+            class="style-input-small style-boder"
+            style="width: 167px"
+          />
         </div>
       </div>
       <div class="footer-form">
@@ -125,13 +137,19 @@
           <button class="luu_va_them_moi">Lưu và thêm mới</button>
           <button class="huy_bo" @click="closeForm">Hủy bỏ</button>
         </div>
+        <div id="lastFocus" tabindex="0" @focus="loop"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Autocomplete from "./autocomplete.vue";
 export default {
+  components: {
+    Autocomplete,
+  },
+
   focus: {
     inserted: function (el) {
       el.focus();
@@ -143,10 +161,9 @@ export default {
   },
 
   methods: {
-
     // Nhờ cha đóng form
     closeForm() {
-        this.$emit("closeFormNow")
+      this.$emit("closeFormNow");
     },
 
     // Hàm focus vào mã cửa hàng
@@ -154,32 +171,66 @@ export default {
       this.$refs.focusInput.focus();
     },
 
+    loop() {
+      this.focusInput();
+    },
+
     // validate form
     validateCode(e) {
-      if (!e.target.value.length)
-        this.isValidateCode = true;
-      else this.isValidateCode = false
+      if (!e.target.value.length) this.isValidateCode = true;
+      else this.isValidateCode = false;
     },
 
     validateName(e) {
-      if (!e.target.value.length)
-        this.isValidateName = true;
-      else this.isValidateName = false
+      if (!e.target.value.length) this.isValidateName = true;
+      else this.isValidateName = false;
     },
 
     validateAddress(e) {
-      if (!e.target.value.length)
-        this.isValidateAddress = true;
-      else this.isValidateAddress = false
-    }
+      if (!e.target.value.length) this.isValidateAddress = true;
+      else this.isValidateAddress = false;
+    },
+
+    getValue(e) {
+      let dataInput = e.target.value;
+      (this.searched = []),
+        (this.searched = this.customers.filter(
+          (x) => x.indexOf(dataInput) > -1
+        ));
+      if (this.searched) this.isShowList = true;
+      else this.isShowList = false;
+    },
+
+    isShow() {
+      this.searched = this.customers;
+      this.isShowList = !this.isShowList;
+    },
+
+    selectOption(e) {
+      this.valueSelectInput = e.target.innerText;
+      this.isShowList = false;
+    },
   },
 
   data() {
     return {
       isValidate: false,
       isValidateCode: false,
-      isValidateName : false,
-      isValidateAddress :false,
+      isValidateName: false,
+      isValidateAddress: false,
+      customers: [
+        "Tạ Đức Chiến",
+        "Cao Thế Thắng",
+        "Nguyễn Văn Thàng",
+        "Nguyễn Đức Thành",
+        "Tạ Nhật Anh",
+      ],
+      isShowList: false,
+      searched: [],
+      valueSelectQuocGia: "",
+      valueSelectTinh: "",
+      valueSelectHuyen: "",
+      valueSelectXa: "",
     };
   },
 };
@@ -205,7 +256,6 @@ export default {
   height: 40px;
   background-color: #f0f0f0;
   position: relative;
-  /* position: absolute; */
 }
 
 .form-title .title {
@@ -251,18 +301,22 @@ textarea:focus {
 }
 
 .style-input-small {
-  width: 167px;
+  width: 137px;
   height: 32px;
 }
 
 .style-margin {
   margin-bottom: 8px;
+}
+
+.phone-number {
   float: left;
 }
 
 .style-boder {
   border: 1px solid #d0d0d0;
-  border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   padding-left: 10px;
 }
 
@@ -276,6 +330,74 @@ textarea:focus {
   height: 32px;
 }
 
+.code-shop,
+.name-shop,
+.address-shop {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipCode,
+.tooltipName,
+.tooltipAddress {
+  visibility: hidden;
+  width: 270px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+}
+
+.tooltipCode::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltipName::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltipAddress::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.code-shop:hover .tooltipCode {
+  visibility: visible;
+}
+
+.name-shop:hover .tooltipName {
+  visibility: visible;
+}
+
+.address-shop:hover .tooltipAddress {
+  visibility: visible;
+
+}
 #shop-address {
   width: 460px;
   height: 80px;
@@ -366,7 +488,7 @@ textarea:focus {
   border-radius: 3px;
 }
 
-.inputValidate{
+.inputValidate {
   border: 1px solid #cf4c35;
   background-image: url("../assets/icon/exclamation.png");
   background-repeat: no-repeat;

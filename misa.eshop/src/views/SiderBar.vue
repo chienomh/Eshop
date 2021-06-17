@@ -26,22 +26,6 @@ export default {
     };
   },
 
-  //   //  Auto focus in "Tổng Quan" when page load
-  //   mounted() {
-  //     this.focusDiv();
-  //   },
-
-  // methods: {
-  //   selectItem() {
-  //     this.isFocus = true;
-  //   },
-
-  //   // Function focus
-  //   focusDiv() {
-  //     this.$refs.tongQuan.focus();
-  //     this.isFocus = true;
-  //   }
-  // }
 }
 </script>
 
